@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 from agents.orchestrator import execute_refund_workflow
 from agents.audit_agent import get_audit_logs
-cd C:\multi-agent-platform
+
 
 # Create FastAPI application
 app = FastAPI(
