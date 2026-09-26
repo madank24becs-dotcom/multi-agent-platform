@@ -1,4 +1,3 @@
-
 # FastAPI application
 # Multi-Agent Business Process Execution Platform
 
@@ -8,7 +7,7 @@ from pydantic import BaseModel
 
 from agents.orchestrator import execute_refund_workflow
 from agents.audit_agent import get_audit_logs
-
+cd C:\multi-agent-platform
 
 # Create FastAPI application
 app = FastAPI(
@@ -18,12 +17,13 @@ app = FastAPI(
 )
 
 
-# Allow the React frontend to connect
+# Allow React frontend to connect
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://127.0.0.1:5173"
+        "http://127.0.0.1:5173",
+        "https://multi-agent-platform-mep7.onrender.com"
     ],
     allow_credentials=True,
     allow_methods=["*"],

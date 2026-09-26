@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 
-const API_URL = 'http://127.0.0.1:8000'
+const API_URL = 'https://multi-agent-platform-mep7.onrender.com'
 
 function App() {
   const [orderId, setOrderId] = useState('ORD123')
