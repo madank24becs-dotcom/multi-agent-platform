@@ -9,7 +9,6 @@ from agents.orchestrator import execute_refund_workflow
 from agents.audit_agent import get_audit_logs
 
 
-# Create FastAPI application
 app = FastAPI(
     title="Multi-Agent Business Process Execution Platform",
     description="API for executing automated refund workflows",
@@ -17,13 +16,13 @@ app = FastAPI(
 )
 
 
-# Allow React frontend to connect
+# Allow frontend applications to communicate with the backend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "https://multi-agent-platform-mep7.onrender.com"
+        "https://multi-agent-platform-h4zg.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -36,7 +35,7 @@ class RefundRequest(BaseModel):
     order_id: str
 
 
-# Home endpoint
+# Home route
 @app.get("/")
 def home():
     return {
@@ -44,7 +43,7 @@ def home():
     }
 
 
-# Health endpoint
+# Health check route
 @app.get("/health")
 def health():
     return {
@@ -52,14 +51,14 @@ def health():
     }
 
 
-# Refund workflow endpoint
+# Refund workflow route
 @app.post("/refund")
 def create_refund(request: RefundRequest):
     result = execute_refund_workflow(request.order_id)
     return result
 
 
-# Audit logs endpoint
+# Audit logs route
 @app.get("/audit-logs")
 def fetch_audit_logs():
     return {
